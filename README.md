@@ -4,8 +4,8 @@ Stimpy Medium
 A simple yet inventive fellow, with a hint of refinement.
 
 ```bash
-$ git clone https://github.com/semateos/stimpy-lite.git
-$ cd stimpy-lite
+$ git clone https://github.com/semateos/stimpy-medium.git
+$ cd stimpy-medium
 $ npm install
 ```
 
