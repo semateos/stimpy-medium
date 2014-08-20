@@ -1,9 +1,12 @@
-var Hapi = require('hapi'),
+// This is the hapi plugin version to be included in other projects
 
+// Dependencies
+var Hapi = require('hapi');
 
-// Require the routes and pass the server object.
-var routes = require('./server/routes/routes')();
+// Server Config
+var config = require('./server/config');
 
+// Hapi Server Plugins
 var plugins = require('./server/config/plugins');
 
 exports.register = function(plugin, options, next) {
@@ -12,14 +15,10 @@ exports.register = function(plugin, options, next) {
         if (err) throw err;
     });
 
-	plugin.route(routes);
+	plugin.route(require('./server/routes/base'));
+    plugin.route(require('./server/routes/static'));
 
-	plugin.views({
-        path: __dirname + '/server/views',
-        engines: {
-            html: require('swig')
-        }
-    });
+	plugin.views(config.hapi.options.views);
 	
 	next();
 };
