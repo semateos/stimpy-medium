@@ -11,7 +11,7 @@ module.exports = {
     hapi: {
         options: {
             views: {
-                path: './server/views',
+                path: rootPath + '/server/views',
                 engines: {
                     html: require('swig')
                 }
