@@ -56,7 +56,7 @@ There are two main folders in the stack. The "**public**" folder for front-end (
 [Sam Mateosian](https://github.com/semateos)
 
 Based on hapi-ninja from [Saul Maddox](https://github.com/poeticninja)
-And, [sample-hapi-rest-api](https://github.com/agendor/sample-hapi-rest-api)
+and, [sample-hapi-rest-api](https://github.com/agendor/sample-hapi-rest-api)
 
 
 ## Credits
