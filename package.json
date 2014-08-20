@@ -1,12 +1,12 @@
 {
-  "name": "hapi-ninja",
-  "description": "Boilerplate Hapi server example. Node.js, Hapi, and Swig.",
+  "name": "stimpy-lite",
+  "description": "Boilerplate Node.js, Hapi, and Swig.",
   "version": "0.2.0",
-  "author": "Saul Maddox",
+  "author": "Sam Mateosian",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/poeticninja/hapi-ninja.git"
+    "url": "https://github.com/semateos/stimpy-lite.git"
   },
   "main": "server.js",
   "engines": {

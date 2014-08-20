@@ -1,19 +1,24 @@
 /**
 * Dependencies.
 */
-var Hapi = require('hapi'),
-    config = require('./server/config/settings');
+var Hapi = require('hapi');
+
+//
+var config = require('./server/config');
 
 // Create a server with a host, port, and options
 var server = Hapi.createServer('0.0.0.0', config.port, config.hapi.options);
 
 // Bootstrap Hapi Server Plugins, passes the server object to the plugins
-require('./server/config/plugins')(server);
+var plugins = require('./server/config/plugins');
 
-// Require the routes and pass the server object.
-var routes = require('./server/config/routes')(server);
+server.pack.register(plugins, function(err) {
+    if (err) throw err;
+});
+
 // Add the server routes
-server.route(routes);
+server.route(require('./server/routes/base'));
+server.route(require('./server/routes/static'));
 
 //Start the server
 server.start(function() {

@@ -1,42 +1,20 @@
-Hapi Ninja
-==========
+Stimpy Lite
+===========
 
-Boilerplate Hapi Web and API Server Example
-
-## The Goal:
-Create a base boilerplate example showing how easy it is to get started with Hapi as a web server.
-
-## The Stack:
-**Node.js** - Because it's fast, easy to get started, and Javscript is awesome.
-[http://nodejs.org/](http://nodejs.org/)
-
-**Hapi** - A very well designed server framework that is easy to understand, easy to create your own plugins, scales very well, cache options built in, and more.
-[http://spumko.github.io/](http://spumko.github.io/)
-
-**Swig** - It looks like HTML, it's very fast, great for template inheritance, and allows you to use HTML syntax with the server and with front-end client Javascript includes.
-[http://paularmstrong.github.io/swig/](http://paularmstrong.github.io/swig/docs/#browser)
-
-**CSS Framework** - None. Choose your own CSS preprocessor and CSS framework.
-
-**Gulp** - A task runner for your assets, and can do a lot more. The performance is amazing and it is easy to get started. [http://gulpjs.com/](http://gulpjs.com/)
-
-### Requirements:
-Install Node.js by using the big install button on the [http://nodejs.org/](http://nodejs.org/) homepage.
-
-After Node.js is installed, clone this repo, change `cd` to this directory, and run `npm install`
+A simple yet inventive fellow.
 
 ```bash
-$ git clone https://github.com/poeticninja/hapi-ninja.git
-$ cd hapi-ninja
+$ git clone https://github.com/semateos/stimpy-lite.git
+$ cd stimpy-lite
 $ npm install
 ```
 
 Start the server by running the command:
 ```
-$ node server
+$ npm start
 ```
 
-To see any changes you can manually just shutdown and restart the node server. This can be a pain so I use Supervisor to watch for file changes and restart the server [https://github.com/isaacs/node-supervisor](https://github.com/isaacs/node-supervisor).
+Or, use Supervisor to watch for file changes and restart the server [https://github.com/isaacs/node-supervisor](https://github.com/isaacs/node-supervisor).
 
 To install run:
 ```
@@ -47,10 +25,9 @@ To use it run:
 ```
 $ supervisor -e html,js  server
 ```
-Now all of your server html and js files are being watched and on change the node server gets restarted automatically.
 
 ####Production
-Before going into production you will want to concatenate and minify your assets. This will increase performance for your user. We will use Gulp for this.
+Before going into production you will want to concatenate and minify your assets. We will use Gulp for this.
 
 To install run:
 ```
@@ -74,20 +51,12 @@ Client/browser reloads new assets based on package.json version of your applicat
 #### Folder Structure
 There are two main folders in the stack. The "**public**" folder for front-end (client side) code, and "**server**" folder for server side code.
 
-By having the front-end folder and server side folder be specific, it provides for better consistency when changing projects. This way when you change from a full front-end app (Phonegap), to a front-end and server side app you get to keep the same folder structure. Allowing for better consistency with your stack, projects, and tools.
-
-
-## Community Projects
-
-Projects that use hapi-ninja as a base.
-
-- [Hapi Dash](https://github.com/smaxwellstewart/hapi-dash) - Boilerplate Hapi Web and API Server Example, with frontend dashboard.
-
-
 ## Contributers
 
-[Saul Maddox](https://github.com/poeticninja),
-You?
+[Sam Mateosian](https://github.com/semateos)
+
+Based on hapi-ninja from [Saul Maddox](https://github.com/poeticninja)
+And, [sample-hapi-rest-api](https://github.com/agendor/sample-hapi-rest-api)
 
 
 ## Credits
