@@ -6,9 +6,6 @@ module.exports = {
             reply.view('index', {
                 title: 'Stimpy, you eediot!'
             });
-        },
-        app: {
-            name: 'index'
         }
     },
     missing: {
@@ -16,9 +13,6 @@ module.exports = {
             reply.view('404', {
                 title: '404 error!'
             }).code(404);
-        },
-        app: {
-            name: '404'
         }
     }
 }

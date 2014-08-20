@@ -11,7 +11,7 @@ module.exports = [
     },
     {
         plugin: require("hapi-assets"),
-        options: require('../../assets')
+        options: require('./assets')
     },
     {
         plugin: require("hapi-named-routes")

@@ -1,7 +1,7 @@
-Stimpy Lite
-===========
+Stimpy Medium
+=============
 
-A simple yet inventive fellow.
+A simple yet inventive fellow, with a hint of refinement.
 
 ```bash
 $ git clone https://github.com/semateos/stimpy-lite.git

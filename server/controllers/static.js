@@ -6,41 +6,26 @@ module.exports = {
     partials: {
         handler: {
             directory: { path: rootPath + '/views/partials' }
-        },
-        app: {
-            name: 'partials'
         }
     },
     images: {
         handler: {
             directory: { path: rootPath + '/public/images' }
-        },
-        app: {
-            name: 'images'
         }
     },
     css: {
         handler: {
             directory: { path: rootPath + '/public/css' }
-        },
-        app: {
-            name: 'css'
         }
     },
     js: {
         handler: {
             directory: { path: rootPath + '/public/js' }
-        },
-        app: {
-            name: 'js'
         }
     },
     bower: {
         handler: {
             directory: { path: rootPath + '/public/bower_components' }
-        },
-        app: {
-            name: 'bower'
         }
     }
 }

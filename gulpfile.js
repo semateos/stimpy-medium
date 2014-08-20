@@ -9,7 +9,7 @@ var gulp = require("gulp"),
     imagemin = require('gulp-imagemin');
 
 // assets is where you define your application assets and you can pass them into gulp.
-var assets = require('./assets');
+var assets = require('./server/config/assets');
 
 // change the working directory to the public folder, where your assets are located.
 var gulpFileCwd = __dirname +'/public';
@@ -22,13 +22,13 @@ gulp.task('default', function(){
 
     // concat and minify your css
     gulp.src(assets.development.css)
-        .pipe(concat("styles_prod.css"))
+        .pipe(concat("styles.min.css"))
         .pipe(minifycss())
         .pipe(gulp.dest('./css/'));
 
     // concat and minify your js
     gulp.src(assets.development.js)
-        .pipe(concat("scripts_prod.js"))
+        .pipe(concat("script.min.js"))
         .pipe(uglify())
         .pipe(gulp.dest('./js/'));
 
