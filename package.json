@@ -1,12 +1,12 @@
 {
-  "name": "stimpy-lite",
-  "description": "Boilerplate Node.js, Hapi, and Swig.",
+  "name": "stimpy-medium",
+  "description": "A simple yet inventive fellow for making Hapi things.",
   "version": "0.2.0",
   "author": "Sam Mateosian",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/semateos/stimpy-lite.git"
+    "url": "https://github.com/semateos/stimpy-medium.git"
   },
   "main": "index.js",
   "engines": {
