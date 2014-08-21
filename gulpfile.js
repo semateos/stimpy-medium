@@ -6,7 +6,8 @@ var gulp = require("gulp"),
     concat = require('gulp-concat'),
     minifycss = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin')
+    
 
 // assets is where you define your application assets and you can pass them into gulp.
 var assets = require('./server/config/assets');
@@ -28,7 +29,7 @@ gulp.task('default', function(){
 
     // concat and minify your js
     gulp.src(assets.development.js)
-        .pipe(concat("script.min.js"))
+        .pipe(concat("scripts.min.js"))
         .pipe(uglify())
         .pipe(gulp.dest('./js/'));
 
@@ -36,5 +37,7 @@ gulp.task('default', function(){
     gulp.src('./images/*')
         .pipe(imagemin())
         .pipe(gulp.dest('./images/'));
+
+    
 
 });
