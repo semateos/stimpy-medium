@@ -10,24 +10,24 @@ $ npm install
 ```
 
 Start the server by running the command:
-```
+```bash
 $ npm start
 ```
 
 Or, use Supervisor to watch for file changes and restart the server [https://github.com/isaacs/node-supervisor](https://github.com/isaacs/node-supervisor).
 
 To install run:
-```
+```bash
 $ npm install -g supervisor bower gulp
 ```
 
 To use it run:
-```
+```bash
 $ supervisor -e html,js  server
 ```
 
 To add front-end packages (for example):
-```
+```bash
 $ bower install --save d3
 ```
 The main files of bower pacakges are automagically included in `server/config/assets.js`
@@ -36,7 +36,7 @@ The main files of bower pacakges are automagically included in `server/config/as
 Before going into production you will want to concatenate and minify your assets. We will use Gulp for this.
 
 To build run:
-```
+```bash
 $ gulp
 ```
 
