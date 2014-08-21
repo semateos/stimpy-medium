@@ -1,7 +1,7 @@
 Stimpy Medium
 =============
 
-A simple yet inventive fellow, with a hint of refinement.
+A simple yet inventive fellow, with a hint of refinement.  A boilerplate for Hapi.js web or api apps.
 
 ```bash
 $ git clone https://github.com/semateos/stimpy-medium.git
@@ -18,7 +18,7 @@ Or, use Supervisor to watch for file changes and restart the server [https://git
 
 To install run:
 ```
-$ npm install -g supervisor
+$ npm install -g supervisor bower gulp
 ```
 
 To use it run:
@@ -26,15 +26,37 @@ To use it run:
 $ supervisor -e html,js  server
 ```
 
+To add front-end packages (for example):
+```
+$ bower install --save d3
+```
+The main files of bower pacakges are automagically included in `server/config/assets.js`
+
 ####Production
 Before going into production you will want to concatenate and minify your assets. We will use Gulp for this.
 
-To install run:
+To build run:
 ```
-npm install -g gulp
+gulp
 ```
 
-Now you can run `gulp` from the command line and it will run the tasks in the `gulpfile.js`. The current tasks will minify and optimize your CSS, JS, and Images. If you want more tasks you can go to the Gulp Plugin page. [http://gratimax.github.io/search-gulp-plugins/](http://gratimax.github.io/search-gulp-plugins/)
+Running `gulp` from the command line will run the tasks in the `gulpfile.js`. The current tasks will minify and optimize your CSS, JS, and Images. If you want more tasks you can go to the Gulp Plugin page. [http://gratimax.github.io/search-gulp-plugins/](http://gratimax.github.io/search-gulp-plugins/)
+
+## The Stack:
+**Node.js** - Because it's fast, easy to get started, and Javscript is awesome.
+[http://nodejs.org/](http://nodejs.org/)
+
+**Hapi** - A very well designed server framework that is easy to understand, easy to create your own plugins, scales very well, cache options built in, and more.
+[http://spumko.github.io/](http://spumko.github.io/)
+
+**Swig** - It looks like HTML, it's very fast, great for template inheritance, and allows you to use HTML syntax with the server and with front-end client Javascript includes.
+[http://paularmstrong.github.io/swig/](http://paularmstrong.github.io/swig/docs/#browser)
+
+**Bower** - Package management for the front end.  Bower uses a flat dependency tree, requiring only one version for each package, reducing page load to a minimum. [http://bower.io/](http://bower.io/)
+
+**CSS Framework** - None. Choose your own CSS preprocessor and CSS framework.
+
+**Gulp** - A task runner for your assets, and can do a lot more. The performance is amazing and it is easy to get started. [http://gulpjs.com/](http://gulpjs.com/)
 
 ## Plugins
 The Hapi plugins that are being used.
