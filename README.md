@@ -23,12 +23,22 @@ $ bower install --save d3
 ```
 
 ####Production
-Before going into production you will want to concatenate and minify your assets. We will use Gulp for this.
+Before going into production you will want to concatenate and minify your assets. We will use Gulp for this
 
 To build run:
 ```bash
 $ gulp
 ```
+
+####Live test with heroku
+To build run:
+```bash
+$ heroku login
+$ heroku create
+$ git push heroku master
+$ heroku open
+```
+See: [https://devcenter.heroku.com/articles/getting-started-with-nodejs](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
 Running `gulp` from the command line will run the tasks in the `gulpfile.js`. The current tasks will minify and optimize your CSS, JS, and Images. If you want more tasks you can go to the Gulp Plugin page. [http://gratimax.github.io/search-gulp-plugins/](http://gratimax.github.io/search-gulp-plugins/)
 
