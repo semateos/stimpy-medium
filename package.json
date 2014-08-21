@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "supervisor -e html,js server",
-    "postinstall": "bower install"
+    "postinstall": "bower install; gulp;"
   },
   "dependencies": {
     "bower": "~1.3.5",
