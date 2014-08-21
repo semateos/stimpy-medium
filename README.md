@@ -9,7 +9,7 @@ $ git clone https://github.com/semateos/stimpy-medium.git
 $ cd stimpy-medium
 $ npm install
 ```
-Install required help utilities:
+Install required utilities:
 ```bash
 $ npm install -g supervisor bower gulp
 ```
