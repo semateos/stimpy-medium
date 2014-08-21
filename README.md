@@ -37,7 +37,7 @@ Before going into production you will want to concatenate and minify your assets
 
 To build run:
 ```
-gulp
+$ gulp
 ```
 
 Running `gulp` from the command line will run the tasks in the `gulpfile.js`. The current tasks will minify and optimize your CSS, JS, and Images. If you want more tasks you can go to the Gulp Plugin page. [http://gratimax.github.io/search-gulp-plugins/](http://gratimax.github.io/search-gulp-plugins/)
