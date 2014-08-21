@@ -1,36 +1,26 @@
 Stimpy Medium
 =============
 
-A simple yet inventive fellow, with a hint of refinement.  A boilerplate for Hapi.js web or api apps.
+Stimpy is a simple yet inventive fellow, with a hint of refinement.  This is a boilerplate for Hapi.js web or api apps.  Stimpy is perfectly content to be run as a hapi plugin or a standalone server.
 
+To install:
 ```bash
 $ git clone https://github.com/semateos/stimpy-medium.git
 $ cd stimpy-medium
 $ npm install
 ```
-
+Install required help utilities:
+```bash
+$ npm install -g supervisor bower gulp
+```
 Start the server by running the command:
 ```bash
 $ npm start
 ```
-
-Or, use Supervisor to watch for file changes and restart the server [https://github.com/isaacs/node-supervisor](https://github.com/isaacs/node-supervisor).
-
-To install run:
-```bash
-$ npm install -g supervisor bower gulp
-```
-
-To use it run:
-```bash
-$ supervisor -e html,js  server
-```
-
 To add front-end packages (for example):
 ```bash
 $ bower install --save d3
 ```
-The main files of bower pacakges are automagically included in `server/config/assets.js`
 
 ####Production
 Before going into production you will want to concatenate and minify your assets. We will use Gulp for this.
@@ -46,6 +36,8 @@ Running `gulp` from the command line will run the tasks in the `gulpfile.js`. Th
 **Node.js** - Because it's fast, easy to get started, and Javscript is awesome.
 [http://nodejs.org/](http://nodejs.org/)
 
+**Supervisor** - To watch for file changes and restart the server during development [https://github.com/isaacs/node-supervisor](https://github.com/isaacs/node-supervisor).
+
 **Hapi** - A very well designed server framework that is easy to understand, easy to create your own plugins, scales very well, cache options built in, and more.
 [http://spumko.github.io/](http://spumko.github.io/)
 
@@ -56,7 +48,7 @@ Running `gulp` from the command line will run the tasks in the `gulpfile.js`. Th
 
 **CSS Framework** - None. Choose your own CSS preprocessor and CSS framework.
 
-**Gulp** - A task runner for your assets, and can do a lot more. The performance is amazing and it is easy to get started. [http://gulpjs.com/](http://gulpjs.com/)
+**Gulp** - A task runner for your assets, and can do a lot more. The performance is amazing and it is easy to get started. [http://gulpjs.com/](http://gulpjs.com/)  The main files of bower pacakges are automagically included in `server/config/assets.js`
 
 ## Plugins
 The Hapi plugins that are being used.
@@ -71,7 +63,7 @@ Assets are in the `./server/config/assets.js` file, and your view layer has acce
 Client/browser reloads new assets based on package.json version of your application. [https://github.com/poeticninja/hapi-cache-buster](https://github.com/poeticninja/hapi-cache-buster)
 
 #### Folder Structure
-There are two main folders in the stack. The "**public**" folder for front-end (client side) code, and "**server**" folder for server side code.
+There are two main folders in the stack. The "**public**" folder for front-end (client side) code, and "**server**" folder for server side code.  `index.js` defines the hapi plugin, `server.js` is a sample server using the plugin.
 
 ## Contributers
 
