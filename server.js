@@ -13,10 +13,10 @@ server.pack.register([
     
 	{ plugin: require("./index") },
 
-	], function(err) {
-    
-    if (err) throw err;
-    server.start(function() {
-        console.log("Hapi server started @ " + server.info.uri);
+    ], function(err) {
+	
+	if (err) throw err;
+	server.start(function() {
+	    console.log("Hapi server started @ " + server.info.uri);
+	});
     });
-});

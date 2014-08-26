@@ -10,13 +10,16 @@ var config = require('./server/config');
 var plugins = require('./server/config/plugins');
 
 exports.register = function(plugin, options, next) {
-
+	
 	plugin.register(plugins, function(err) {
-        if (err) throw err;
-    });
-
+	    if (err) throw err;
+	});
+	
+	// Make sure DB is available
+	plugin.dependency('dogwater');
+	
 	plugin.route(require('./server/routes/base'));
-    plugin.route(require('./server/routes/static'));
+	plugin.route(require('./server/routes/static'));
 
 	plugin.views(config.hapi.options.views);
 	
