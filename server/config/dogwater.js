@@ -1,4 +1,4 @@
-Path = require('path');
+var Path = require('path');
 
 module.exports = {
     

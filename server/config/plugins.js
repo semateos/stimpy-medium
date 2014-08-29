@@ -1,5 +1,3 @@
-Path = require('path');
-
 module.exports = [
     {
         plugin: require("dogwater"),
