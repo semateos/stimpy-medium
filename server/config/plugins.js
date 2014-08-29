@@ -1,5 +1,8 @@
-
 module.exports = [
+    {
+        plugin: require("dogwater"),
+        options: require("./dogwater")
+    },
     {
         plugin: require("good"),
         options: {

@@ -63,6 +63,9 @@ Running `gulp` from the command line will run the tasks in the `gulpfile.js`. Th
 ## Plugins
 The Hapi plugins that are being used.
 
+#### Dogwater
+Dogwater makes [Waterline ORM](https://github.com/balderdashy/waterline) available as a Hapi plugin.  Models exist in `server/models` and connection/adapter configurations live in `server/config/dogwater.js`. [https://github.com/devinivy/dogwater](https://github.com/devinivy/dogwater)
+
 #### Hapi-Named-Routes
 Added names to the routes. This allows you to have access to the path in the templates just by using the `path.nameofroute` variable. [https://github.com/poeticninja/hapi-named-routes](https://github.com/poeticninja/hapi-named-routes)
 

@@ -1,20 +1,31 @@
 {
   "name": "stimpy-medium",
   "description": "A simple yet inventive fellow for making Hapi things.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Sam Mateosian",
   "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/semateos/stimpy-medium.git"
   },
+  "contributors":[
+    {
+      "name": "Sam Mateosian",
+      "url": "https://github.com/semateos"
+    },
+    {
+      "name": "Devin Ivy",
+      "url": "https://github.com/devinivy"
+    }
+  ],
   "main": "index.js",
   "engines": {
     "node": "0.10.x"
   },
   "scripts": {
     "start": "supervisor -e html,js server",
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "test": "make test-cov"
   },
   "dependencies": {
     "bower": "~1.3.5",
@@ -24,6 +35,8 @@
     "hapi-assets": "~0.2.0",
     "hapi-cache-buster": "~0.2.0",
     "hapi-named-routes": "~0.2.0",
+    "dogwater": "^0.1.1",
+    "sails-disk": "^0.10.3",
     "main-bower-files": "^2.0.0",
     "require-directory": "~1.2.0",
     "swig": "~1.3.2",
@@ -35,6 +48,7 @@
     "gulp-imagemin": "~0.6.1",
     "gulp-minify-css": "~0.3.4",
     "gulp-uglify": "~0.3.0",
-    "gulp-util": "~2.2.17"
+    "gulp-util": "~2.2.17",
+    "lab": "4.x.x"
   }
 }
