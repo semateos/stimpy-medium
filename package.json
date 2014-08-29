@@ -1,13 +1,23 @@
 {
   "name": "stimpy-medium",
   "description": "A simple yet inventive fellow for making Hapi things.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Sam Mateosian",
   "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/semateos/stimpy-medium.git"
   },
+  "contributors":[
+    {
+      "name": "Sam Mateosian",
+      "url": "https://github.com/semateos"
+    },
+    {
+      "name": "Devin Ivy",
+      "url": "https://github.com/devinivy"
+    }
+  ],
   "main": "index.js",
   "engines": {
     "node": "0.10.x"
@@ -25,7 +35,7 @@
     "hapi-assets": "~0.2.0",
     "hapi-cache-buster": "~0.2.0",
     "hapi-named-routes": "~0.2.0",
-    "dogwater": "^0.0.1",
+    "dogwater": "^0.1.1",
     "sails-disk": "^0.10.3",
     "main-bower-files": "^2.0.0",
     "require-directory": "~1.2.0",
