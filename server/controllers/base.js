@@ -7,25 +7,8 @@ module.exports = {
             // Grab the DB from dogwater
             var db = request.server.plugins['dogwater'];
             
-            // Look for Stimpy in the cats model
+            // Look for Stimpy in the cats model, placed there as a fixture
             db.cats.findOne(1)
-            .then(function(cat) {
-                
-                // If you can't find Stimpy, make him
-                if (!cat) {
-                    
-                    return  db.cats.create({id: 1, name: 'Stimpy'})
-                            .then(function(cat) {
-                                return cat;
-                            });
-                    
-                } else {
-                    
-                    return cat;
-                    
-                }
-                
-            })
             .then(function(cat) {
             
                 // Render the view with the custom greeting to Stimpy
