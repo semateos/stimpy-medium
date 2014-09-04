@@ -1,7 +1,7 @@
 {
   "name": "stimpy-medium",
   "description": "A simple yet inventive fellow for making Hapi things.",
-  "version": "0.3.1",
+  "version": "0.0.2",
   "author": "Sam Mateosian",
   "private": false,
   "repository": {
