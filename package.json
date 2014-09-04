@@ -1,14 +1,14 @@
 {
   "name": "stimpy-medium",
   "description": "A simple yet inventive fellow for making Hapi things.",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": "Sam Mateosian",
   "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/semateos/stimpy-medium.git"
   },
-  "contributors":[
+  "contributors": [
     {
       "name": "Sam Mateosian",
       "url": "https://github.com/semateos"
