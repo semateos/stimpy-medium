@@ -4,29 +4,37 @@ var _ = require('underscore-node');
 var path = require('path');
 var config = require('./index');
 
-var files  = require('bower-files')({
-    dir: config.root + '/public/bower_components',
-    json: config.root + '/bower.json'
-});
+var mainBowerFiles = require('main-bower-files');
+var files = mainBowerFiles();
 
+var js = [];
+var css = [];
 
-files.js = _.map(files.js, function(filePath){
+files = _.map(files, function(file, key){
 
-	return path.relative(config.root + '/public', filePath);
-});
+    var relative = path.relative(config.root + '/public', file);
 
-files.css = _.map(files.css, function(filePath){
+    switch(path.extname(file)){
 
-	return path.relative(config.root + '/public', filePath);
+        case '.js':
+            js.push(relative);
+            break;
+
+        case '.css':
+            css.push(relative);
+            break;
+    }
+
+	return file;
 });
 
 
 module.exports = {
     development: {
-        js: files.js.concat([
+        js: js.concat([
         	'js/main.js'
         ]),
-        css: files.css.concat([
+        css: css.concat([
         	'css/styles.css'
         ])
     },
