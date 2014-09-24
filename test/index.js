@@ -1,24 +1,60 @@
 // Load modules
 var Lab = require('lab');
 var Hapi = require('hapi');
+var Async = require('async');
 
 // Test shortcuts
 var lab = exports.lab = Lab.script();
 var expect = Lab.expect;
 var beforeEach = lab.beforeEach;
+var before = lab.before;
+var after = lab.after;
+var afterEach = lab.afterEach;
 var experiment = lab.experiment;
 var test = lab.test;
 
 
 experiment('Stimpy-medium', function () {
     
+    var server;
+    var config = require('../server/config');
+
+    beforeEach(function(done) {
+        
+        server = Hapi.createServer(config.host, config.port, config.hapi.options);
+        
+        done();
+        
+    });
+    
+    afterEach(function(done) {
+        
+        var orm = server.plugins.dogwater.cats.waterline;
+        
+        /* Take each connection used by the orm... */
+        Async.each(Object.keys(orm.connections), function(key, cbDone) {
+            
+            var adapter = orm.connections[key]._adapter;
+            
+            /* ... and use the relevant adapter to kill it. */
+            if (typeof adapter.teardown === "function") {
+                
+                adapter.teardown(function() {
+                    cbDone();
+                });
+                
+            } else {
+                cbDone();
+            }
+            
+        },
+        function (err) {
+            done(err);
+        });
+        
+    });
+    
     test('loads certain plugins from config on a server with some options.', function (done) {
-        
-        // Server Config
-        var config = require('../server/config');
-        
-        // Create a server with a host, port, and options
-        var server = Hapi.createServer(config.host, config.port, config.hapi.options);
         
         // Hapi Server Plugins
         var plugins = require('../server/config/plugins');;
@@ -41,12 +77,6 @@ experiment('Stimpy-medium', function () {
     });
 
     test('test index page', function (done) {
-        
-        // Server Config
-        var config = require('../server/config');
-        
-        // Create a server with a host, port, and options
-        var server = Hapi.createServer(config.host, config.port, config.hapi.options);
         
         server.pack.register([{ plugin: require("../index") }], function(err) {
                 
