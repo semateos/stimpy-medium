@@ -25,21 +25,45 @@ experiment('Stimpy-medium', function () {
         
         server.pack.register(plugins, function(err) {
                 
-                expect(err).to.not.exist;
-                
-                // Glean the names of the plugins that were included.                
-                var pluginNames = Object.keys(server._registrations);
-                
-                expect(pluginNames).to.have.members(['dogwater',
-                                                     'good',
-                                                     'hapi-named-routes',
-                                                     'hapi-cache-buster',
-                                                     'hapi-assets']);
-                
-                done();
-            }
+            expect(err).to.not.exist;
             
-        );
+            // Glean the names of the plugins that were included.                
+            var pluginNames = Object.keys(server._registrations);
+            
+            expect(pluginNames).to.have.members(['dogwater',
+                                                 'good',
+                                                 'hapi-named-routes',
+                                                 'hapi-cache-buster',
+                                                 'hapi-assets']);
+            
+            done();
+        });
+    });
+
+    test('test index page', function (done) {
+        
+        // Server Config
+        var config = require('../server/config');
+        
+        // Create a server with a host, port, and options
+        var server = Hapi.createServer(config.host, config.port, config.hapi.options);
+        
+        server.pack.register([{ plugin: require("../index") }], function(err) {
+                
+            var options = {
+                method: "GET",
+                url: "/"
+            };
+         
+            server.inject(options, function(response) {
+
+                var result = response.result;
+         
+                Lab.expect(response.statusCode).to.equal(200);
+         
+                done();
+            });
+        });
     });
     
 });
