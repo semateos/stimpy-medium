@@ -14,20 +14,22 @@ var experiment = lab.experiment;
 var test = lab.test;
 
 
-experiment('Stimpy-medium', function () {
+experiment('stimpy-medium', function () {
     
     var server;
     var config = require('../server/config');
 
-    beforeEach(function(done) {
+    before(function(done) {
         
         server = Hapi.createServer(config.host, config.port, config.hapi.options);
         
-        done();
-        
+        server.pack.register([{ plugin: require("../index") }], function(err) {
+
+            done(err);
+        });
     });
     
-    afterEach(function(done) {
+    after(function(done) {
         
         var orm = server.plugins.dogwater.cats.waterline;
         
@@ -51,49 +53,75 @@ experiment('Stimpy-medium', function () {
         function (err) {
             done(err);
         });
-        
     });
     
     test('loads certain plugins from config on a server with some options.', function (done) {
         
-        // Hapi Server Plugins
-        var plugins = require('../server/config/plugins');;
+        // Glean the names of the plugins that were included.                
+        var pluginNames = Object.keys(server._registrations);
+
+        expect(pluginNames).to.have.members(['stimpy-medium',
+                                             'dogwater',
+                                             'good',
+                                             'hapi-named-routes',
+                                             'hapi-cache-buster',
+                                             'hapi-assets']);
         
-        server.pack.register(plugins, function(err) {
-                
-            expect(err).to.not.exist;
-            
-            // Glean the names of the plugins that were included.                
-            var pluginNames = Object.keys(server._registrations);
-            
-            expect(pluginNames).to.have.members(['dogwater',
-                                                 'good',
-                                                 'hapi-named-routes',
-                                                 'hapi-cache-buster',
-                                                 'hapi-assets']);
-            
+        done();
+    });
+
+    test('assets parsed', function (done) {
+        
+        var assets = require('../server/config/assets');
+
+        expect(assets.development.js).to.be.an('array');
+        expect(assets.development.css).to.be.an('array');
+
+        expect(server._registrations['hapi-assets'].options.development.js).to.be.an('array');
+        expect(server._registrations['hapi-assets'].options.development.css).to.be.an('array');
+        expect(server._registrations['hapi-assets'].options.production.js).to.be.an('array');
+        expect(server._registrations['hapi-assets'].options.production.css).to.be.an('array');
+
+        expect(assets.development.js).to.eql(server._registrations['hapi-assets'].options.development.js);
+        expect(assets.development.css).to.eql(server._registrations['hapi-assets'].options.development.css);
+
+        done();
+    });
+
+    test('index view responds', function (done) {
+        
+        var options = {
+            method: "GET",
+            url: "/"
+        };
+     
+        server.inject(options, function(response) {
+
+            var result = response.result;
+
+            Lab.expect(response.statusCode).to.equal(200);
+     
             done();
         });
-    });
 
-    test('test index page', function (done) {
-        
-        server.pack.register([{ plugin: require("../index") }], function(err) {
-                
-            var options = {
-                method: "GET",
-                url: "/"
-            };
-         
-            server.inject(options, function(response) {
-
-                var result = response.result;
-         
-                Lab.expect(response.statusCode).to.equal(200);
-         
-                done();
-            });
-        });
     });
     
+    test('404 view reponds 404', function (done) {
+        
+        var options = {
+            method: "GET",
+            url: "/aksjdhfkajshflkajhfdlkajsdflaksdjfhsadkljfhsadlkjfhasdlkjfhasdlkjfhadslkjfhalkdsfjh"
+        };
+     
+        server.inject(options, function(response) {
+
+            var result = response.result;
+        
+            Lab.expect(response.statusCode).to.equal(404);
+     
+            done();
+        });
+
+    });
+
 });

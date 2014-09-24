@@ -21,6 +21,7 @@ files = _.map(files, function(file, key){
             break;
 
         case '.css':
+            console.log('found a css file');
             css.push(relative);
             break;
     }
@@ -29,17 +30,22 @@ files = _.map(files, function(file, key){
 });
 
 
+var development = {
+    js: js.concat([
+        'js/main.js'
+    ]),
+    css: css.concat([
+        'css/styles.css'
+    ])
+}
+
+var production = {
+    js: ['js/scripts.min.js'],
+    css: ['css/styles.min.css']
+}
+
 module.exports = {
-    development: {
-        js: js.concat([
-        	'js/main.js'
-        ]),
-        css: css.concat([
-        	'css/styles.css'
-        ])
-    },
-    production: {
-        js: ['js/scripts.min.js'],
-        css: ['css/styles.min.css']
-    }
+    test: development,
+    development: development,
+    production: production
 }
