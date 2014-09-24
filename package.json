@@ -48,6 +48,7 @@
     "gulp-minify-css": "~0.3.4",
     "gulp-uglify": "~0.3.0",
     "gulp-util": "~2.2.17",
-    "lab": "4.x.x"
+    "lab": "4.x.x",
+    "async": "0.9.x"
   }
 }
