@@ -7,6 +7,7 @@ module.exports = {
     
     attributes: {
         name: 'string',
+        clicks: 'int'
     }
     
 }

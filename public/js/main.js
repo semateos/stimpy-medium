@@ -12,8 +12,10 @@ $(document).ready(function(){
 
     });
 
-    $('.text button').on('click', function(){
+    $('.text button').on('touchstart click', function(e){
 
+        e.stopPropagation(); e.preventDefault();
+        
     	$.getJSON("/api/button/add", function( data ) {
 
 	    	$('.text h1').html(data.clicks);
