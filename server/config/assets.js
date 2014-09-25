@@ -35,6 +35,7 @@ var development = {
         'js/main.js'
     ]),
     css: css.concat([
+        'bower_components/fullscreener/src/jquery.fullscreener.css',
         'css/styles.css'
     ])
 }

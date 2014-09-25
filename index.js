@@ -18,8 +18,7 @@ exports.register = function(plugin, options, next) {
 	    // Make sure DB is available
 	    plugin.dependency('dogwater');
 	    
-	    plugin.route(require('./server/routes/base'));
-	    plugin.route(require('./server/routes/static'));
+	    plugin.route(require('./server/routes'));
 	    
 	    plugin.views(config.hapi.options.views);
 	    

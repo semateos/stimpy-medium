@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "fullscreener": "~1.0.1"
   }
 }
