@@ -24,17 +24,16 @@ $ git remote set-url origin git@github.com:semateos/my-app.git
 ```
 
 ####Live test with heroku
-To build run:
 ```bash
 $ git commit -am "awesome changes"
 $ stimpy deploy heroku
 ```
 See: [https://devcenter.heroku.com/articles/getting-started-with-nodejs](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
-####Production
+####Production Build
 Before going into production you will want to concatenate and minify your assets.
 
-To build run:
+To mini run:
 ```bash
 $ gulp
 ```
