@@ -5,17 +5,13 @@ Stimpy is a simple yet inventive fellow, with a hint of refinement.  This is a b
 
 To install:
 ```bash
-$ git clone https://github.com/semateos/stimpy-medium.git
-$ cd stimpy-medium
-$ npm install
-```
-Install required utilities:
-```bash
-$ npm install -g supervisor bower gulp
+$ npm install -g stimpy supervisor bower gulp
+$ stimpy create medium my-new-project
+$ cd my-new-project
 ```
 Start the server by running the command:
 ```bash
-$ npm start
+$ stimpy start
 ```
 To add front-end packages (for example):
 ```bash
@@ -23,20 +19,23 @@ $ bower install --save d3
 ```
 
 ####Production
-Before going into production you will want to concatenate and minify your assets. We will use Gulp for this
+Before going into production you will want to concatenate and minify your assets.
 
 To build run:
 ```bash
 $ gulp
 ```
 
+Point the git origin to something else eventually:
+```bash
+$ git remote set-url origin git@github.com:semateos/my-app.git
+```
+
 ####Live test with heroku
 To build run:
 ```bash
-$ heroku login
-$ heroku create
-$ git push heroku master
-$ heroku open
+$ git commit -am "awesome changes"
+$ stimpy deploy heroku
 ```
 See: [https://devcenter.heroku.com/articles/getting-started-with-nodejs](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
