@@ -18,14 +18,6 @@ To add front-end packages (for example):
 $ bower install --save d3
 ```
 
-####Production
-Before going into production you will want to concatenate and minify your assets.
-
-To build run:
-```bash
-$ gulp
-```
-
 Point the git origin to something else eventually:
 ```bash
 $ git remote set-url origin git@github.com:semateos/my-app.git
@@ -38,6 +30,14 @@ $ git commit -am "awesome changes"
 $ stimpy deploy heroku
 ```
 See: [https://devcenter.heroku.com/articles/getting-started-with-nodejs](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
+
+####Production
+Before going into production you will want to concatenate and minify your assets.
+
+To build run:
+```bash
+$ gulp
+```
 
 Running `gulp` from the command line will run the tasks in the `gulpfile.js`. The current tasks will minify and optimize your CSS, JS, and Images. If you want more tasks you can go to the Gulp Plugin page. [http://gratimax.github.io/search-gulp-plugins/](http://gratimax.github.io/search-gulp-plugins/)
 
