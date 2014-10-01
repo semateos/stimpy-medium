@@ -7,8 +7,8 @@ module.exports = [
         plugin: require("good"),
         options: {
             subscribers: {
-                console: ['ops', 'request', 'log', 'error'],
-                'tmp/logs/log': ['ops', 'request', 'log', 'error']
+                console: ['ops', 'request', 'log', 'error']
+//                'tmp/logs/': ['ops', 'request', 'log', 'error']
             }
         }
     },
