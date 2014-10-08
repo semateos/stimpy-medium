@@ -18,12 +18,13 @@ experiment('stimpy-medium', function () {
     
     var server;
     var config = require('../server/config');
+    var plugins = require('../server/config/plugins');
 
     before(function(done) {
         
         server = Hapi.createServer(config.host, config.port, config.hapi.options);
         
-        server.pack.register([{ plugin: require("../index") }], function(err) {
+        server.pack.register(plugins.concat([{ plugin: require("../index") }]), function(err) {
 
             done(err);
         });
@@ -60,12 +61,15 @@ experiment('stimpy-medium', function () {
         // Glean the names of the plugins that were included.                
         var pluginNames = Object.keys(server._registrations);
 
-        expect(pluginNames).to.have.members(['stimpy-medium',
-                                             'dogwater',
-                                             'good',
-                                             'hapi-named-routes',
-                                             'hapi-cache-buster',
-                                             'hapi-assets']);
+        //console.log(pluginNames);
+
+        expect(pluginNames).to.have.members([ 
+                                                'dogwater',
+                                                'hapi-assets',
+                                                'hapi-named-routes',
+                                                'hapi-cache-buster',
+                                                'stimpy-medium'
+                                            ]);
         
         done();
     });
