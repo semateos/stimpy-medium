@@ -17,7 +17,7 @@ server.pack.register([
 	
 	if (err) throw err;
 	server.start(function() {
-	    console.log("Hapi server started @ " + server.info.uri);
+	    console.log("Hapi server started @ " + server.info.uri.replace('0.0.0.0', 'localhost'));
 	});
     }
     
