@@ -31,7 +31,7 @@
     "bower": "~1.3.5",
     "dogwater": "^0.2.x",
     "good": "~2.1.2",
-    "hapi": "~6.0.1",
+    "hapi": "^7.0.0",
     "hapi-assets": "~0.2.0",
     "hapi-cache-buster": "~0.2.0",
     "hapi-named-routes": "~0.2.0",

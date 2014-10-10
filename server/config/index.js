@@ -11,12 +11,13 @@ module.exports = {
     port: parseInt(process.env.PORT, 10) || 3000,
     hapi: {
         options: {
-            views: {
-                path: rootPath + '/server/views',
-                engines: {
-                    html: require('swig')
-                }
-            }
+            
+        }
+    },
+    views: {
+        path: rootPath + '/server/views',
+        engines: {
+            html: require('swig')
         }
     }
 }
