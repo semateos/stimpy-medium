@@ -22,9 +22,14 @@ experiment('stimpy-medium', function () {
 
     before(function(done) {
         
-        server = Hapi.createServer(config.host, config.port, config.hapi.options);
+        server = new Hapi.Server();
         
-        server.pack.register(plugins.concat([{ plugin: require("../index") }]), function(err) {
+        server.connection({
+            host: config.host,
+            port: config.port
+        });
+        
+        server.register(plugins.concat([{ register: require("../index") }]), function(err) {
 
             done(err);
         });
@@ -59,7 +64,7 @@ experiment('stimpy-medium', function () {
     test('loads certain plugins from config on a server with some options.', function (done) {
         
         // Glean the names of the plugins that were included.                
-        var pluginNames = Object.keys(server._registrations);
+        var pluginNames = Object.keys(server.connections[0]._registrations);
 
         //console.log(pluginNames);
 
@@ -81,13 +86,13 @@ experiment('stimpy-medium', function () {
         expect(assets.development.js).to.be.an('array');
         expect(assets.development.css).to.be.an('array');
 
-        expect(server._registrations['hapi-assets'].options.development.js).to.be.an('array');
-        expect(server._registrations['hapi-assets'].options.development.css).to.be.an('array');
-        expect(server._registrations['hapi-assets'].options.production.js).to.be.an('array');
-        expect(server._registrations['hapi-assets'].options.production.css).to.be.an('array');
+        expect(server.connections[0]._registrations['hapi-assets'].options.development.js).to.be.an('array');
+        expect(server.connections[0]._registrations['hapi-assets'].options.development.css).to.be.an('array');
+        expect(server.connections[0]._registrations['hapi-assets'].options.production.js).to.be.an('array');
+        expect(server.connections[0]._registrations['hapi-assets'].options.production.css).to.be.an('array');
 
-        expect(assets.development.js).to.eql(server._registrations['hapi-assets'].options.development.js);
-        expect(assets.development.css).to.eql(server._registrations['hapi-assets'].options.development.css);
+        expect(assets.development.js).to.eql(server.connections[0]._registrations['hapi-assets'].options.development.js);
+        expect(assets.development.css).to.eql(server.connections[0]._registrations['hapi-assets'].options.development.css);
 
         done();
     });

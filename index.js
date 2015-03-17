@@ -7,18 +7,20 @@ var Hapi = require('hapi');
 var config = require('./server/config');
 
 // Export the plugin
-exports.register = function(plugin, options, next) {
+exports.register = function(server, options, next) {
 	
     // Make sure DB is available
-    plugin.dependency('dogwater');
+    server.dependency('dogwater');
     
-    plugin.route(require('./server/routes'));
+    server.route(require('./server/routes'));
     
-    plugin.views(config.views);
+    server.views(config.views);
     
     next();
 };
 
+var Package = require("./package.json");
 exports.register.attributes = {
-    pkg: require("./package.json")
+    name: 	Package.name,
+    version: 	Package.version
 }

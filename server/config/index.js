@@ -1,8 +1,8 @@
 /**
 * Dependencies.
 */
-var path = require('path'),
-rootPath = path.normalize(__dirname + '/../..');
+var Path = require('path'),
+rootPath = Path.normalize(__dirname + '/../..');
 
 // Defaults that you can access when you require this config.
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
     port: parseInt(process.env.PORT, 10) || 3000,
     hapi: {
         options: {
-            
+            routes: {}
         }
     },
     views: {
