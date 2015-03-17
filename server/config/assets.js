@@ -4,34 +4,49 @@ var _ = require('underscore-node');
 var path = require('path');
 var config = require('./index');
 
-var files  = require('bower-files')({
-    dir: config.root + '/public/bower_components',
-    json: config.root + '/bower.json'
+var mainBowerFiles = require('main-bower-files');
+var files = mainBowerFiles();
+
+var js = [];
+var css = [];
+
+files = _.map(files, function(file, key){
+
+    var relative = path.relative(config.root + '/public', file);
+
+    switch(path.extname(file)){
+
+        case '.js':
+            js.push(relative);
+            break;
+
+        case '.css':
+            console.log('found a css file');
+            css.push(relative);
+            break;
+    }
+
+	return file;
 });
 
 
-files.js = _.map(files.js, function(filePath){
+var development = {
+    js: js.concat([
+        'js/main.js'
+    ]),
+    css: css.concat([
+        'bower_components/fullscreener/src/jquery.fullscreener.css',
+        'css/styles.css'
+    ])
+}
 
-	return path.relative(config.root + '/public', filePath);
-});
-
-files.css = _.map(files.css, function(filePath){
-
-	return path.relative(config.root + '/public', filePath);
-});
-
+var production = {
+    js: ['js/scripts.min.js'],
+    css: ['css/styles.min.css']
+}
 
 module.exports = {
-    development: {
-        js: files.js.concat([
-        	'js/main.js'
-        ]),
-        css: files.css.concat([
-        	'css/styles.css'
-        ])
-    },
-    production: {
-        js: ['js/scripts.min.js'],
-        css: ['css/styles.min.css']
-    }
+    test: development,
+    development: development,
+    production: production
 }

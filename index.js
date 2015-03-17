@@ -6,24 +6,17 @@ var Hapi = require('hapi');
 // Server Config
 var config = require('./server/config');
 
-// Hapi Server Plugins
-var plugins = require('./server/config/plugins');
-
+// Export the plugin
 exports.register = function(plugin, options, next) {
 	
-	plugin.register(plugins, function(err) {
-	    if (err) throw err;
-	});
-	
-	// Make sure DB is available
-	plugin.dependency('dogwater');
-	
-	plugin.route(require('./server/routes/base'));
-	plugin.route(require('./server/routes/static'));
-
-	plugin.views(config.hapi.options.views);
-	
-	next();
+    // Make sure DB is available
+    plugin.dependency('dogwater');
+    
+    plugin.route(require('./server/routes'));
+    
+    plugin.views(config.views);
+    
+    next();
 };
 
 exports.register.attributes = {
