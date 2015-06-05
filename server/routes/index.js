@@ -1,15 +1,40 @@
+var Config = require('../config');
 var _ = require('underscore-node');
 
-var routers = [	
-	'./api',
-	'./base',
-	'./static'
-];
 
-var routes = [];
+module.exports = function(server, options) {
 
-_.each(routers, function(route){
-	routes = routes.concat(require(route));
-});
+	var routers;
 
-module.exports = routes;
+	if (Config.serveBuild) {
+
+		routers = [
+			'./build',
+			'./static'
+		];
+	} else {
+
+		routers = [	
+			'./api',
+			'./base',
+			'./static'
+		];
+	}
+
+
+	var routes = [];
+	var tmpRoute;
+
+	_.each(routers, function(route){
+
+		tmpRoute = require(route);
+
+		if (typeof tmpRoute === 'function') {
+			tmpRoute = tmpRoute(server, options);
+		}
+
+		routes = routes.concat(tmpRoute);
+	});
+
+	return routes;
+}

@@ -7,31 +7,50 @@ var Hapi = require('hapi');
 var config = require('./server/config');
 
 // Create a server with a host, port, and options
-var server = Hapi.createServer(config.host, config.port, config.hapi.options);
+var server = new Hapi.Server();
 
-var plugins = require('./server/config/plugins');
+server.connection({
+    host: config.host,
+    port: config.port,
+    routes: config.hapi.options.routes
+});
 
-plugins = plugins.concat([
-	{
-        plugin: require("good"),
-        options: {
-            subscribers: {
-                console: ['ops', 'request', 'log', 'error']
-				//'./tmp/logs/': ['ops', 'request', 'log', 'error']
-            }
-        }
-    },
-	{ 
-		plugin: require("./index")
-	}
-]);
-
-server.pack.register(plugins, function(err) {
-	
-	if (err) throw err;
-	server.start(function() {
-	    console.log("Hapi server started @ " + server.info.uri.replace('0.0.0.0', 'localhost'));
-	});
+var registerOpts = [
+    {
+    	register: require("./index")
     }
-    
-);
+];
+
+module.exports = {
+    server: server,
+    registerOpts: registerOpts
+}
+
+if (!module.parent) {
+
+    // Add good
+    registerOpts.push({
+        register: require("good"),
+        options: {
+            reporters: [{
+		reporter: require('good-console'),
+		args: [{
+		    request: '*',
+		    log: '*',
+		    error: '*',
+		    ops: '*'
+		}]
+            }]
+        }
+    });
+
+    server.register(registerOpts, function(err) {
+
+	    if (err) throw err;
+
+	    server.start(function() {
+		console.log("Hapi server started @ " + server.info.uri.replace('0.0.0.0', 'localhost'));
+	    });
+    });
+
+}
