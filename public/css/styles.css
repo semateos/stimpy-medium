@@ -1,26 +1,26 @@
-* { 
-	padding: 0; 
-	margin: 0; 
-	outline: 0; 
+* {
+	padding: 0;
+	margin: 0;
+	outline: 0;
 }
 
 html,
-body { 
+body {
 	height: 100%;
 	font-size: 10px;
 }
 
-img { 
-	border: 0; 
-	vertical-align: middle; 
+img {
+	border: 0;
+	vertical-align: middle;
 }
 
-.bg { 
-	position: relative; 
+.bg {
+	position: relative;
 	min-height: 100%;
 }
 
-.text{ 
+.text{
 	display: block;
 	text-align: center;
 	font-family: sans-serif;
