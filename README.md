@@ -5,7 +5,7 @@ Stimpy is a simple yet inventive fellow, with a hint of refinement.  This is a b
 
 To install:
 ```bash
-$ npm install -g stimpy supervisor bower gulp
+$ npm install -g stimpy bower gulp
 $ stimpy create medium my-new-project
 $ cd my-new-project
 ```
@@ -41,13 +41,13 @@ $ gulp
 Running `gulp` from the command line will run the tasks in the `gulpfile.js`. The current tasks will minify and optimize your CSS, JS, and Images. If you want more tasks you can go to the Gulp Plugin page. [http://gratimax.github.io/search-gulp-plugins/](http://gratimax.github.io/search-gulp-plugins/)
 
 ## The Stack:
-**Node.js** - Because it's fast, easy to get started, and Javscript is awesome.
+**Node.js** - Because it's fun, npm rules, and JS is hipster.
 [http://nodejs.org/](http://nodejs.org/)
 
-**Supervisor** - To watch for file changes and restart the server during development [https://github.com/isaacs/node-supervisor](https://github.com/isaacs/node-supervisor).
+**BrowserSync** - To watch for file changes, reload browser and sync browser events across devices [https://http://www.browsersync.io/](https://github.com/isaacs/node-supervisor).
 
 **Hapi** - A very well designed server framework that is easy to understand, easy to create your own plugins, scales very well, cache options built in, and more.
-[http://spumko.github.io/](http://spumko.github.io/)
+[http://hapijs.com/](http://hapijs.com/)
 
 **Swig** - It looks like HTML, it's very fast, great for template inheritance, and allows you to use HTML syntax with the server and with front-end client Javascript includes.
 [http://paularmstrong.github.io/swig/](http://paularmstrong.github.io/swig/docs/#browser)
@@ -74,7 +74,7 @@ Assets are in the `./server/config/assets.js` file, and your view layer has acce
 Client/browser reloads new assets based on package.json version of your application. [https://github.com/poeticninja/hapi-cache-buster](https://github.com/poeticninja/hapi-cache-buster)
 
 #### Folder Structure
-There are two main folders in the stack. The "**public**" folder for front-end (client side) code, and "**server**" folder for server side code.  `index.js` defines the hapi plugin, `server.js` is a sample server using the plugin.
+There are two main folders in the stack. The "**public**" folder for front-end (client side) code, and "**server**" folder for server side code.  `index.js` defines the hapi plugin, `server.js` runs the plugin and starts browserSync.
 
 ## Contributers
 
