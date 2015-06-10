@@ -9,6 +9,7 @@ lib-cov
 
 pids
 results
+.tmp
 tmp/log*
 tmp/log/log
 .tmp/*
