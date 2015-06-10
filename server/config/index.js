@@ -9,6 +9,15 @@ console.log('version', pjson.version);
 
 console.log('node env', process.env.NODE_ENV);
 
+//templating engine:
+var swig = require('swig');
+
+//set template render chaching to false on dev
+if(process.env.NODE_ENV == 'development'){
+
+  swig.setDefaults({ cache: false });
+}
+
 var config = {
     root: rootPath,
     host: '0.0.0.0',
@@ -21,8 +30,11 @@ var config = {
             views: {
                 path: rootPath + '/server/views',
                 engines: {
-                    html: require('swig')
-                }
+                    html: {
+                      module: swig
+                    }
+                },
+                isCached: (process.env.NODE_ENV == 'development') ? false : true
             },
             routes: {
                 cors: true

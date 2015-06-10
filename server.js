@@ -22,9 +22,27 @@ var registerOpts = [
 ];
 
 
-var start = function(){
+var browserSync;
 
-  // Add good
+if(config.env == 'development'){
+
+  browserSync = require('browser-sync').create();
+
+  //restart the server if js files change
+  //does not work - it needs to reload at the node level duh
+
+  //browserSync.watch("server/**/*.js").on("change", function(){
+
+  //  server.stop();
+
+  //  server.start(browserSync.reload);
+
+  //});
+}
+
+var start = function(cb){
+
+  // Add good logging
   registerOpts.push({
     register: require("good"),
     options: {
@@ -49,16 +67,22 @@ var start = function(){
       console.log("Hapi server started @ " + server.info.uri.replace('0.0.0.0', 'localhost'));
 
       //use browserSync in dev mode
-      if(config.env == 'development'){
-
-        var browserSync = require('browser-sync').create();
+      if(config.env == 'development' && !browserSync.active){
 
         browserSync.init({
 
           proxy: "localhost:3000",
-          files: ['public/**/*.{js,css,html}']
+          files: [
+            'public/**/*.{js,css,html}',
+            'server/views/*.html'
+          ]
 
         });
+      }
+
+      if(cb) {
+
+        cb();
       }
 
     });
