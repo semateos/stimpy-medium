@@ -13,7 +13,7 @@ module.exports = {
 
                 // Render the view with the custom greeting to Stimpy
                 reply.view('index', {
-                    title: 'Stimpy Medium'
+                    title: 'Stimpy!'
                 });
 
             });
