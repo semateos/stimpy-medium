@@ -31,9 +31,9 @@ $ stimpy deploy heroku
 See: [https://devcenter.heroku.com/articles/getting-started-with-nodejs](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
 ####Production Build
-Before going into production you will want to concatenate and minify your assets.
+Before going into production you may want to concatenate and minify your assets.
 
-To mini run:
+To minify run:
 ```bash
 $ gulp
 ```
@@ -52,11 +52,11 @@ Running `gulp` from the command line will run the tasks in the `gulpfile.js`. Th
 **Swig** - It looks like HTML, it's very fast, great for template inheritance, and allows you to use HTML syntax with the server and with front-end client Javascript includes.
 [http://paularmstrong.github.io/swig/](http://paularmstrong.github.io/swig/docs/#browser)
 
-**Bower** - Package management for the front end.  Bower uses a flat dependency tree, requiring only one version for each package, reducing page load to a minimum. [http://bower.io/](http://bower.io/)
+**Bower** - Package management for the front end.  Bower uses a flat dependency tree, requiring only one version for each package, reducing page load to a minimum. [http://bower.io/](http://bower.io/)  The main files of bower packages are automagically included in `server/config/assets.js` and in `server/views/includes/foot.html`.
 
 **CSS Framework** - None. Choose your own CSS preprocessor and CSS framework.
 
-**Gulp** - A task runner for your assets, and can do a lot more. The performance is amazing and it is easy to get started. [http://gulpjs.com/](http://gulpjs.com/)  The main files of bower pacakges are automagically included in `server/config/assets.js`
+**Gulp** - A task runner for your assets, and can do a lot more. The performance is amazing and it is easy to get started. [http://gulpjs.com/](http://gulpjs.com/)
 
 ## Plugins
 The Hapi plugins that are being used.
