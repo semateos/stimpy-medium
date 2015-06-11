@@ -32,12 +32,26 @@ if(config.env == 'development'){
   //does not work - it needs to reload at the node level duh
 
   //browserSync.watch("server/**/*.js").on("change", function(){
-
   //  server.stop();
-
   //  server.start(browserSync.reload);
-
   //});
+}
+
+var startSync = function(){
+
+  //use browserSync in dev mode
+  if(config.env == 'development' && !browserSync.active){
+
+    browserSync.init({
+
+      proxy: "localhost:3000",
+      files: [
+        'public/**/*.{js,css,html}',
+        'server/views/*.html'
+      ]
+
+    });
+  }
 }
 
 var start = function(cb){
@@ -66,20 +80,6 @@ var start = function(cb){
 
       console.log("Hapi server started @ " + server.info.uri.replace('0.0.0.0', 'localhost'));
 
-      //use browserSync in dev mode
-      if(config.env == 'development' && !browserSync.active){
-
-        browserSync.init({
-
-          proxy: "localhost:3000",
-          files: [
-            'public/**/*.{js,css,html}',
-            'server/views/*.html'
-          ]
-
-        });
-      }
-
       if(cb) {
 
         cb();
@@ -99,5 +99,5 @@ module.exports = {
 
 if (!module.parent) {
 
-  start();
+  start(startSync);
 }
