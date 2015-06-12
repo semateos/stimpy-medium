@@ -2,9 +2,11 @@
 * Dependencies.
 */
 var path = require('path'),
+
 rootPath = path.normalize(__dirname + '/../..');
 
 var pjson = require('../../package.json');
+
 console.log('version', pjson.version);
 
 console.log('node env', process.env.NODE_ENV);
@@ -13,7 +15,7 @@ console.log('node env', process.env.NODE_ENV);
 var swig = require('swig');
 
 //set template render chaching to false on dev
-if(process.env.NODE_ENV == 'dev'){
+if(process.env.NODE_ENV == 'development'){
 
   swig.setDefaults({ cache: false });
 }
@@ -43,9 +45,11 @@ var config = {
     }
 }
 
-switch(process.env.NODE_ENV){
+config.env = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
 
-    case 'dev':
+switch(config.env){
+
+    case 'development':
     case 'production':
     case 'cordova':
     default:
@@ -55,7 +59,7 @@ switch(process.env.NODE_ENV){
 
 }
 
-config.env = process.env.NODE_ENV;
+
 
 config.serveBuild = (config.env === "production" || config.env === "staging");
 

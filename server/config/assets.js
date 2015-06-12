@@ -30,7 +30,7 @@ files = _.map(files, function(file, key){
 });
 
 
-var dev = {
+var development = {
     js: js.concat([
         'js/main.js'
     ]),
@@ -46,7 +46,7 @@ var production = {
 }
 
 module.exports = {
-    test: dev,
-    dev: dev,
+    test: development,
+    development: development,
     production: production
 }

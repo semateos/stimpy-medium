@@ -24,7 +24,7 @@ var registerOpts = [
 
 var browserSync;
 
-if(config.env == 'dev'){
+if(config.env == 'development'){
 
   browserSync = require('browser-sync').create();
 
@@ -40,7 +40,7 @@ if(config.env == 'dev'){
 var startSync = function(){
 
   //use browserSync in dev mode
-  if(config.env == 'dev' && !browserSync.active){
+  if(config.env == 'development' && !browserSync.active){
 
     browserSync.init({
 
