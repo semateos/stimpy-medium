@@ -39,8 +39,8 @@ img {
 .text button{
 	font-size: 3em;
 	background: transparent;
-	border: 3px solid red;
-	color: red;
+	border: 3px solid white;
+	color: white;
 	padding: 20px;
 	border-radius: 5px;
 	cursor: pointer;

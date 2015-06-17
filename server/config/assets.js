@@ -47,6 +47,7 @@ var production = {
 
 module.exports = {
     test: development,
+    staging: development,
     development: development,
     production: production
 }

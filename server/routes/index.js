@@ -9,12 +9,14 @@ module.exports = function(server, options) {
 	if (Config.serveBuild) {
 
 		routers = [
-			'./build',
+			'./api',
+			'./base',
 			'./static'
 		];
+
 	} else {
 
-		routers = [	
+		routers = [
 			'./api',
 			'./base',
 			'./static'
