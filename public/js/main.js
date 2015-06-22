@@ -1,26 +1,22 @@
-console.log('js goes here you sick little monkey');
+/* Main Example File */
+$(document).ready(function () {
 
-$(document).ready(function(){
+	$.getJSON("/api/button/count", function (data) {
 
-	console.log('ready');
+		$('#counter').html(data.clicks);
 
-    $('.bg img').fullscreener();
+	});
 
-    $.getJSON("/api/button/count", function( data ) {
+	$('button').on('touchstart click', function (e) {
 
-    	$('.text h1').html(data.clicks);
+		e.stopPropagation();
+		e.preventDefault();
 
-    });
+		$.getJSON("/api/button/add", function (data) {
 
-    $('.text button').on('touchstart click', function(e){
+			$('#counter').html(data.clicks);
 
-        e.stopPropagation(); e.preventDefault();
-
-    		$.getJSON("/api/button/add", function( data ) {
-
-	    	$('.text h1').html(data.clicks);
-
-	    });
-    })
+		});
+	})
 
 });

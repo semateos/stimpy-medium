@@ -1,15 +1,13 @@
-{% extends './layouts/default.html' %}
+{% extends 'global.html' %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
 
-<div class="bg">
-    <img src="images/stimpy.gif" width="500" height="375" alt="" />
-    <div class="text">
-    	<h1>0</h1>
-    	<button>PUSH THE BUTTON</button>
-    </div>
-</div>
+  <h1>Hello World  </h1>
+
+  <p id="counter">0</p>
+  
+  <button type="button">PUSH THE BUTTON</button>
 
 {% endblock %}

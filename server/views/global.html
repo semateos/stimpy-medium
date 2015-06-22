@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]> <html class="no-js lt_ie9"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt_ie10 ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="ClearType" content="true">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta charset="UTF-8">
+        <title>{{title}}</title>
+        <meta name="description" content="{{ description }}">
+
+        <!-- CSSAssets -->
+        {% for item in assets.css %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{item}}{{version.cache}}" />
+        {% endfor %}
+        <!-- /CSSAssets-->
+
+        <!-- JSAssets -->
+        {% for item in assets.js %}
+        <script src="{{item}}{{version.cache}}"></script>
+        {% endfor %}
+        <!-- /JSAssets-->
+
+        <!-- ViewDependencies -->
+    	{% block head %}{% endblock %}
+        <!-- /ViewDependencies -->
+
+        <!-- TODO: Move GA to it's own block  -->
+        <script type="text/javascript">
+
+          // GA
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-48101170-1', 'maxfelker.com');
+          ga('send', 'pageview');
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <!-- View -->
+        {% block content %}{% endblock %}
+        <!-- /View-->
+
+    </body>
+
+</html>
